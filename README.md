@@ -70,6 +70,9 @@ routes({
 The package deliberately has no layout, page, fragment, HTMX, redirect, or
 rendering abstraction. Those decisions remain visible in controller code.
 
+The compiled `dist` files are committed so installing directly from GitHub
+does not require dependency lifecycle scripts.
+
 ## Development live reload
 
 The optional development entry injects a browser client into full HTML
