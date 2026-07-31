@@ -1,4 +1,4 @@
-# @jdlanglois/site
+# hyperserver
 
 A tiny closure-first controller layer for server-rendered Hono applications.
 It owns controller construction and route registration. Hono owns HTTP,
@@ -6,11 +6,11 @@ middleware, routing, and responses. Your application owns rendering, layouts,
 partial-response conventions, state, and services.
 
 ```sh
-npm install @jdlanglois/site hono
+npm install github:JoeLanglois/hyperserver
 ```
 
 ```ts
-import { ctrl, site } from "@jdlanglois/site";
+import { ctrl, site } from "hyperserver";
 import { html } from "@jdlanglois/view/server";
 
 type AppDeps = {
@@ -54,7 +54,7 @@ Use Hono middleware for cross-cutting HTTP behavior. For behavior scoped to an
 individual controller, `wrap()` creates a composable controller wrapper:
 
 ```ts
-import { wrap } from "@jdlanglois/site";
+import { wrap } from "hyperserver";
 
 const requireUser = wrap<AppDeps>(next => async (app, context) => {
   const user = await app.deps.sessions.user(context.req.raw);
@@ -77,7 +77,7 @@ responses. It reloads changed same-origin stylesheets without refreshing the
 page and refreshes the page when a restarted server renders different HTML.
 
 ```ts
-import { liveReload } from "@jdlanglois/site/dev";
+import { liveReload } from "hyperserver/dev";
 
 const app = site<AppDeps>(({ app, routes }) => {
   app.use("*", liveReload());
@@ -96,7 +96,7 @@ deno run --watch --allow-net src/server.ts
 The client polls in development, so linked CSS files are detected even when
 they are not part of the server's imported module graph. HTMX requests are
 excluded from script injection by default. The middleware is intentionally
-available only from the `@jdlanglois/site/dev` entry point and should not be
+available only from the `hyperserver/dev` entry point and should not be
 registered in production.
 
 Register live reload after middleware that transforms responses, such as

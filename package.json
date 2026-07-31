@@ -1,5 +1,5 @@
 {
-  "name": "@jdlanglois/site",
+  "name": "hyperserver",
   "version": "0.1.0",
   "description": "A tiny closure-first controller layer for server-rendered Hono applications.",
   "license": "MIT",
